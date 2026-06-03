@@ -50,8 +50,7 @@ export default {
     fetch("https://gb5r23gzbb.execute-api.eu-central-1.amazonaws.com/slots")
       .then(res => res.json())
       .then(data => {
-        const parsed = JSON.parse(data.body);
-        this.slots = parsed.filter(s => !s.isBooked).map(s => s.slot);
+        this.slots = data.filter(s => !s.isBooked).map(s => s.slot);
       });
   },
   methods: {
