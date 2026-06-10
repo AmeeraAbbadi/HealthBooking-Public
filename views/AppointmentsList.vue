@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     fetchAppointments() {
-      fetch("https://k6yzm1znub.execute-api.eu-central-1.amazonaws.com/prod/appointments")
+      fetch("https://y41iciuitd.execute-api.eu-central-1.amazonaws.com/API2/appontment")
         .then(res => res.json())
         .then(data => {
           const parsed = JSON.parse(data.body);
@@ -74,7 +74,7 @@ export default {
       console.log("appointmentId:", cleanAppointment.appointmentId);
       console.log(" appointmentId (direct):", appointment.appointmentId);
 
-      const url = `https://k6yzm1znub.execute-api.eu-central-1.amazonaws.com/prod/appointments${appointment.appointmentId}`;
+      const url = `https://y41iciuitd.execute-api.eu-central-1.amazonaws.com/API2/appontment${appointment.appointmentId}`;
 
       const payload = { status: newStatus };
 
