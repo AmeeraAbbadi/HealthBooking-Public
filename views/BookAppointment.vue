@@ -47,7 +47,7 @@ export default {
     };
   },
   mounted() {
-    fetch("https://k6yzm1znub.execute-api.eu-central-1.amazonaws.com/prod/slots")
+    fetch("https://y41iciuitd.execute-api.eu-central-1.amazonaws.com/API2/slots")
       .then(res => res.json())
       .then(data => {
         const parsed = JSON.parse(data.body);
@@ -63,7 +63,7 @@ export default {
         slot: this.selectedSlot
       };
 
-      fetch("https://k6yzm1znub.execute-api.eu-central-1.amazonaws.com/prod/appointments", {
+      fetch("https://y41iciuitd.execute-api.eu-central-1.amazonaws.com/API2/appontment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ body: JSON.stringify(payload) })
