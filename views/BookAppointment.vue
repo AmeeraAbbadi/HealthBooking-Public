@@ -72,7 +72,7 @@ export default {
         slot: this.selectedSlot
       };
 
-      fetch("https://y41iciuitd.execute-api.eu-central-1.amazonaws.com/API2/appointment", {
+      fetch("https://y41iciuitd.execute-api.eu-central-1.amazonaws.com/API2/appontment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
