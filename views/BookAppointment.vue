@@ -46,15 +46,24 @@ export default {
       slots: []
     };
   },
-  mounted() {
-    fetch("https://y41iciuitd.execute-api.eu-central-1.amazonaws.com/API2/slots")
-      .then(res => res.json())
-      .then(data => {
-        const parsed = JSON.parse(data.body);
-        this.slots = parsed.filter(s => !s.isBooked).map(s => s.slot);
-  
-      });
-  },
+ mounted() {
+  fetch("https://y41iciuitd.execute-api.eu-central-1.amazonaws.com/API2/slots")
+    .then(res => res.json())
+    .then(data => {
+      console.log("API Response:", data);
+
+      const parsed = JSON.parse(data.body);
+
+      console.log("Parsed Slots:", parsed);
+
+      this.slots = parsed
+        .filter(s => !s.isBooked)
+        .map(s => s.slot);
+    })
+    .catch(err => {
+      console.error("Slots Error:", err);
+    });
+},
   methods: {
     submitAppointment() {
       const payload = {
@@ -63,10 +72,10 @@ export default {
         slot: this.selectedSlot
       };
 
-      fetch("https://y41iciuitd.execute-api.eu-central-1.amazonaws.com/API2/appontment", {
+      fetch("https://y41iciuitd.execute-api.eu-central-1.amazonaws.com/API2/appointment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ body: JSON.stringify(payload) })
+        body: JSON.stringify(payload)
       })
         .then(res => res.json())
         .then(() => {
